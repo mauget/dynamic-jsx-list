@@ -21,6 +21,8 @@ export default function ParagraphList(props) {
     return <>{paragraphs.map((pgString, key) => <Paragraph key={key}>{pgString}</Paragraph>)}</>;
 }
 ```
+This screenshot's content is a `blurb` prop string sent to the `<ParagraphList blurb={aString}/>`
+component. Each rendered paragraph wraps an extracted substring that was delimited by a `\n`;
 
 ![./rendered-blurb.png](./rendered-blurb.png)
 
