@@ -6,9 +6,10 @@ const StyledParaGraph = styled.p`
     padding-right: 1.0rem;
 `;
 
+const paragraphs = (b) => String(b).split(/\n/).map(
+    (string, index) => <StyledParaGraph key={index}>{string}</StyledParaGraph>);
+
 export default function Paragraphs(props) {
     const {blurb} = {...props};
-
-    return <>{String(blurb).split(/\n/).map(
-        (string, index) => <StyledParaGraph key={index}>{string}</StyledParaGraph>)}</>;
+    return <>{paragraphs(blurb)}</>;
 }
