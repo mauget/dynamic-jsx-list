@@ -1,5 +1,5 @@
 # Paragraph Markup Generated from a String
-This React `ParagraphList` component generates a series of HTML `<p>` elements
+This React `Paragraphs` component generates a series of HTML `<p>` elements
 from a a blurb string containing embedded `\n` control characters. 
 
 (It uses styled components, but that is not a central dependency.)
@@ -15,13 +15,13 @@ const Paragraph = styled.p`
     padding-right: 2.0rem;
 `;
 
-export default function ParagraphList(props) {
+export default function Paragraphs(props) {
     const {blurb} = {...props};
     const paragraphs = String(blurb).split(/\n/);
     return <>{paragraphs.map((pgString, key) => <Paragraph key={key}>{pgString}</Paragraph>)}</>;
 }
 ```
-This screenshot's content is a `blurb` prop string sent to the `<ParagraphList blurb={aString}/>`
+This screenshot's content is a `blurb` prop string sent to the `<Paragraphs blurb={aString}/>`
 component. Each rendered paragraph wraps an extracted substring that was delimited by a `\n`;
 
 ![./rendered-blurb.png](./rendered-blurb.png)
