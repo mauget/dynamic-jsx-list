@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import styled from 'styled-components';
 
 const StyledParaGraph = styled.p`
@@ -11,5 +11,6 @@ const paragraphs = (b) => String(b).split(/\n/).map(
 
 export default function Paragraphs(props) {
     const {blurb} = {...props};
-    return <>{paragraphs(blurb)}</>;
+    const memoizedParagraphs = useMemo(() => paragraphs(blurb), [blurb]);
+    return <>{memoizedParagraphs}</>;
 }

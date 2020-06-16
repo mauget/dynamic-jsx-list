@@ -5,7 +5,7 @@ from a a blurb string containing embedded `\n` control characters.
 (It uses styled components, but that is not a central dependency.)
 
 ```javascript
-import React from 'react';
+import React, {useMemo} from 'react';
 import styled from 'styled-components';
 
 const StyledParaGraph = styled.p`
@@ -13,11 +13,13 @@ const StyledParaGraph = styled.p`
     padding-right: 1.0rem;
 `;
 
+const paragraphs = (b) => String(b).split(/\n/).map(
+    (string, index) => <StyledParaGraph key={index}>{string}</StyledParaGraph>);
+
 export default function Paragraphs(props) {
     const {blurb} = {...props};
-
-    return <>{String(blurb).split(/\n/).map(
-        (string, index) => <StyledParaGraph key={index}>{string}</StyledParaGraph>)}</>;
+    const memoizedParagraphs = useMemo(() => paragraphs(blurb), [blurb]);
+    return <>{memoizedParagraphs}</>;
 }
 ```
 This screenshot's content is a `blurb` prop string sent to the `<Paragraphs blurb={aString}/>`
