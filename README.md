@@ -8,17 +8,16 @@ from a a blurb string containing embedded `\n` control characters.
 import React from 'react';
 import styled from 'styled-components';
 
-const Paragraph = styled.p`
-    color: white;
-    text-align: left;
-    padding-left: 2.0rem;
-    padding-right: 2.0rem;
+const StyledParaGraph = styled.p`
+    padding-left: 1.0rem;
+    padding-right: 1.0rem;
 `;
 
 export default function Paragraphs(props) {
     const {blurb} = {...props};
-    const paragraphs = String(blurb).split(/\n/);
-    return <>{paragraphs.map((pgString, key) => <Paragraph key={key}>{pgString}</Paragraph>)}</>;
+
+    return <>{String(blurb).split(/\n/).map(
+        (string, index) => <StyledParaGraph key={index}>{string}</StyledParaGraph>)}</>;
 }
 ```
 This screenshot's content is a `blurb` prop string sent to the `<Paragraphs blurb={aString}/>`
